@@ -38,9 +38,21 @@ def encrypt(text, keyword='', printable=False):
 
     return cipher, cipher_text
 
+def decrypt(cipher_text, cipher):
+    cipher = dict((v, k) for k, v in cipher.items())
+    text = ''
+    
+    for letter in cipher_text:
+        text += cipher[letter]
+    
+    return text
+        
+    
+
 
 file = open("./test.txt", encoding="utf8")
 text = file.read()
 
-cipher, cipher_text = encrypt(text, keyword='Nima Safaei', printable=True)
+cipher, cipher_text = encrypt(text, keyword='Mamad', printable=True)
 print(cipher_text)
+print(decrypt(cipher_text, cipher))
